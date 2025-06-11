@@ -1,0 +1,113 @@
+import React, { useState, useEffect } from "react";
+
+const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Mock data
+  const services = [
+    {
+      title: "Fresh Fruits & Vegetables",
+      description:
+        "From apples to zucchini, we source the freshest produce directly from certified Portuguese farms.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8">
+          <path
+            fill="currentColor"
+            d="M17.5 6.5c0-.55-.45-1-1-1h-10c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1v-10zm-10-1h10v10h-10v-10zM9 10a1 1 0 011-1h4a1 1 0 010 2H10a1 1 0 01-1-1zm0 3a1 1 0 011-1h4a1 1 0 010 2H10a1 1 0 01-1-1z"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Wines & Beverages",
+      description:
+        "Discover premium Portuguese wines and beverages that reflect our rich viticultural heritage.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8">
+          <path
+            fill="currentColor"
+            d="M12 2C9.79 2 8 3.79 8 6c0 2.97 2.17 5.43 5 5.91V18H9v2h8v-2h-4v-6.09c2.83-.48 5-2.94 5-5.91 0-2.21-1.79-4-4-4zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Frozen Foods",
+      description:
+        "High-quality frozen fruits, seafood, and prepared meals preserved at peak freshness.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8">
+          <path
+            fill="currentColor"
+            d="M18 4v16H6V4h12m0-2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 13h-2v-2h2v2zm0-4h-2V7h2v4z"
+          />
+        </svg>
+      ),
+    },
+  ];
+
+  const countries = [
+    { name: "Angola", flag: "🇦🇴" },
+    { name: "Mozambique", flag: "🇲🇿" },
+    { name: "São Tomé & Príncipe", flag: "🇸🇹" },
+    { name: "Cape Verde", flag: "🇨🇻" },
+    { name: "France", flag: "🇫🇷" },
+    { name: "Germany", flag: "🇩🇪" },
+  ];
+
+  const benefits = [
+    {
+      title: "Direct Producer Relationships",
+      description:
+        "We work directly with local producers to ensure quality and fair pricing.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6">
+          <path
+            fill="currentColor"
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Quality Control",
+      description:
+        "Rigorous inspections to ensure every product meets international standards.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6">
+          <path
+            fill="currentColor"
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Documentation Handling",
+      description:
+        "We manage all export documentation to ensure compliance and smooth delivery.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6">
+          <path
+            fill="currentColor"
+            d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Logistics Excellence",
+      description:
+        "Flexible shipping options via land, sea, or air for reliable and timely delivery.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6">
+          <path
+            fill="currentColor"
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2
